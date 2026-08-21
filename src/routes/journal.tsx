@@ -1,17 +1,25 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Feather } from "lucide-react";
 import { RequireAuth } from "@/components/RequireAuth";
 import { useApp } from "@/lib/app-store";
+import { toast } from "sonner";
 import { moods } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/journal")({
   head: () => ({
     meta: [
       { title: "Mood journal — Dreamboard" },
-      { name: "description", content: "A gentle mood journal: log how you feel, notice patterns and reflect on your progress." },
+      {
+        name: "description",
+        content:
+          "A gentle mood journal: log how you feel, notice patterns and reflect on your progress.",
+      },
       { property: "og:title", content: "Mood journal — Dreamboard" },
-      { property: "og:description", content: "Reflection is part of the work, not a reward for it." },
+      {
+        property: "og:description",
+        content: "Reflection is part of the work, not a reward for it.",
+      },
     ],
   }),
   component: () => (
@@ -58,6 +66,7 @@ function JournalPage() {
               title: title.trim() || `Feeling ${mood.toLowerCase()}`,
               body: body.trim(),
             });
+            toast.success("Reflection saved.");
             setTitle("");
             setBody("");
           }}
@@ -74,7 +83,9 @@ function JournalPage() {
                 onClick={() => setMood(m)}
                 className={
                   "rounded-xl px-2 py-2.5 text-xs transition-all duration-300 " +
-                  (mood === m ? "bg-primary text-primary-foreground scale-105" : "bg-secondary text-primary")
+                  (mood === m
+                    ? "bg-primary text-primary-foreground scale-105"
+                    : "bg-secondary text-primary")
                 }
               >
                 {m}
@@ -145,12 +156,21 @@ function JournalPage() {
                   day: "numeric",
                 })}
               </p>
-              <span className={"rounded-full px-3 py-1 text-xs " + (moodTone[e.mood] ?? "bg-secondary")}>
+              <span
+                className={"rounded-full px-3 py-1 text-xs " + (moodTone[e.mood] ?? "bg-secondary")}
+              >
                 {e.mood}
               </span>
             </div>
             <h2 className="display mt-3 text-3xl text-primary">{e.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.body}</p>
+            <Link
+              to="/journal/$entryId"
+              params={{ entryId: e.id }}
+              className="mt-3 inline-flex text-xs text-clay hover:text-primary"
+            >
+              Read full entry →
+            </Link>
           </article>
         ))}
 

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Feather, LayoutGrid, Quote, Target } from "lucide-react";
 import { Brand } from "@/components/Brand";
 import { quotes } from "@/lib/mock-data";
+import { Footer } from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,15 +16,18 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Dreamboard — Vision boards that turn into progress" },
       {
         property: "og:description",
-        content: "Creative visualisation meets structured execution: boards, milestones, mood journal, inspiration.",
+        content:
+          "Creative visualisation meets structured execution: boards, milestones, mood journal, inspiration.",
       },
       {
         property: "og:image",
-        content: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
+        content:
+          "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
       },
       {
         name: "twitter:image",
-        content: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
+        content:
+          "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
       },
     ],
   }),
@@ -59,7 +63,10 @@ function Landing() {
       <header className="mx-auto flex max-w-7xl items-center justify-between px-5 py-6">
         <Brand />
         <nav className="flex items-center gap-2">
-          <Link to="/login" className="rounded-full px-5 py-2.5 text-sm text-primary hover:bg-secondary">
+          <Link
+            to="/login"
+            className="rounded-full px-5 py-2.5 text-sm text-primary hover:bg-secondary"
+          >
             Sign in
           </Link>
           <Link
@@ -79,9 +86,9 @@ function Landing() {
             <span className="block text-clay">possible.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base text-muted-foreground">
-            Physical vision boards go quiet on the wall. Task apps forget why you started. Dreamboard keeps the
-            picture and the progress in one place — boards you can move, milestones you can tick, and a journal
-            that remembers how it felt.
+            Physical vision boards go quiet on the wall. Task apps forget why you started.
+            Dreamboard keeps the picture and the progress in one place — boards you can move,
+            milestones you can tick, and a journal that remembers how it felt.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
@@ -144,7 +151,9 @@ function Landing() {
               key={q.id}
               className={
                 "animate-rise rounded-2xl p-8 " +
-                (i === 1 ? "bg-primary text-primary-foreground" : "bg-accent text-accent-foreground")
+                (i === 1
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-accent text-accent-foreground")
               }
             >
               <p className="display text-2xl">“{q.text}”</p>
@@ -158,7 +167,9 @@ function Landing() {
         <div className="animate-rise flex flex-wrap items-center justify-between gap-6 rounded-3xl bg-primary p-12 text-primary-foreground">
           <div>
             <p className="eyebrow text-primary-foreground/70">Ready when you are</p>
-            <h2 className="display mt-3 text-4xl sm:text-5xl">Give your next chapter a place to land.</h2>
+            <h2 className="display mt-3 text-4xl sm:text-5xl">
+              Give your next chapter a place to land.
+            </h2>
           </div>
           <Link
             to="/signup"
@@ -169,17 +180,7 @@ function Landing() {
         </div>
       </section>
 
-      <footer className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 border-t border-border px-5 py-8 text-sm text-muted-foreground">
-        <span>© {new Date().getFullYear()} Dreamboard</span>
-        <div className="flex gap-5">
-          <Link to="/login" className="hover:text-primary">
-            Sign in
-          </Link>
-          <Link to="/signup" className="hover:text-primary">
-            Create account
-          </Link>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

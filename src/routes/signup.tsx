@@ -8,9 +8,16 @@ export const Route = createFileRoute("/signup")({
   head: () => ({
     meta: [
       { title: "Create your Dreamboard" },
-      { name: "description", content: "Start a free Dreamboard: visual boards, milestone tracking and a mood journal in one calm space." },
+      {
+        name: "description",
+        content:
+          "Start a free Dreamboard: visual boards, milestone tracking and a mood journal in one calm space.",
+      },
       { property: "og:title", content: "Create your Dreamboard" },
-      { property: "og:description", content: "Turn your vision into gentle, trackable daily progress." },
+      {
+        property: "og:description",
+        content: "Turn your vision into gentle, trackable daily progress.",
+      },
     ],
   }),
   component: SignupPage,
@@ -51,8 +58,20 @@ function SignupPage() {
         }}
       >
         <Field label="Your name" value={name} onChange={setName} placeholder="Alex Rivera" />
-        <Field label="Email" value={email} onChange={setEmail} type="email" placeholder="you@example.com" />
-        <Field label="Password" value={password} onChange={setPassword} type="password" placeholder="At least 6 characters" />
+        <Field
+          label="Email"
+          value={email}
+          onChange={setEmail}
+          type="email"
+          placeholder="you@example.com"
+        />
+        <Field
+          label="Password"
+          value={password}
+          onChange={setPassword}
+          type="password"
+          placeholder="At least 6 characters"
+        />
         {error && <p className="text-sm text-destructive">{error}</p>}
         <button
           type="submit"

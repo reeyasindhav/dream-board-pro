@@ -10,20 +10,39 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as GoalsRouteImport } from './routes/goals'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as InspirationRouteImport } from './routes/inspiration'
 import { Route as JournalRouteImport } from './routes/journal'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as StatsRouteImport } from './routes/stats'
+import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BoardsIndexRouteImport } from './routes/boards.index'
 import { Route as BoardsBoardIdRouteImport } from './routes/boards.$boardId'
 import { Route as BoardsNewRouteImport } from './routes/boards.new'
+import { Route as GoalsGoalIdRouteImport } from './routes/goals/$goalId'
+import { Route as JournalEntryIdRouteImport } from './routes/journal/$entryId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -34,6 +53,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const GoalsRoute = GoalsRouteImport.update({
   id: '/goals',
   path: '/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InspirationRoute = InspirationRouteImport.update({
@@ -51,6 +75,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -59,6 +88,21 @@ const SettingsRoute = SettingsRouteImport.update({
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatsRoute = StatsRouteImport.update({
+  id: '/stats',
+  path: '/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplatesRoute = TemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BoardsIndexRoute = BoardsIndexRouteImport.update({
@@ -76,98 +120,169 @@ const BoardsNewRoute = BoardsNewRouteImport.update({
   path: '/boards/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoalsGoalIdRoute = GoalsGoalIdRouteImport.update({
+  id: '/$goalId',
+  path: '/$goalId',
+  getParentRoute: () => GoalsRoute,
+} as any)
+const JournalEntryIdRoute = JournalEntryIdRouteImport.update({
+  id: '/$entryId',
+  path: '/$entryId',
+  getParentRoute: () => JournalRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
-  '/goals': typeof GoalsRoute
+  '/goals': typeof GoalsRouteWithChildren
+  '/help': typeof HelpRoute
   '/inspiration': typeof InspirationRoute
-  '/journal': typeof JournalRoute
+  '/journal': typeof JournalRouteWithChildren
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
+  '/stats': typeof StatsRoute
+  '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
   '/boards/new': typeof BoardsNewRoute
+  '/goals/$goalId': typeof GoalsGoalIdRoute
+  '/journal/$entryId': typeof JournalEntryIdRoute
   '/boards/': typeof BoardsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
-  '/goals': typeof GoalsRoute
+  '/goals': typeof GoalsRouteWithChildren
+  '/help': typeof HelpRoute
   '/inspiration': typeof InspirationRoute
-  '/journal': typeof JournalRoute
+  '/journal': typeof JournalRouteWithChildren
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
+  '/stats': typeof StatsRoute
+  '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
   '/boards/new': typeof BoardsNewRoute
+  '/goals/$goalId': typeof GoalsGoalIdRoute
+  '/journal/$entryId': typeof JournalEntryIdRoute
   '/boards': typeof BoardsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
-  '/goals': typeof GoalsRoute
+  '/goals': typeof GoalsRouteWithChildren
+  '/help': typeof HelpRoute
   '/inspiration': typeof InspirationRoute
-  '/journal': typeof JournalRoute
+  '/journal': typeof JournalRouteWithChildren
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
+  '/stats': typeof StatsRoute
+  '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
   '/boards/$boardId': typeof BoardsBoardIdRoute
   '/boards/new': typeof BoardsNewRoute
+  '/goals/$goalId': typeof GoalsGoalIdRoute
+  '/journal/$entryId': typeof JournalEntryIdRoute
   '/boards/': typeof BoardsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/contact'
     | '/dashboard'
     | '/goals'
+    | '/help'
     | '/inspiration'
     | '/journal'
     | '/login'
+    | '/privacy'
     | '/settings'
     | '/signup'
+    | '/stats'
+    | '/templates'
+    | '/terms'
     | '/boards/$boardId'
     | '/boards/new'
+    | '/goals/$goalId'
+    | '/journal/$entryId'
     | '/boards/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/contact'
     | '/dashboard'
     | '/goals'
+    | '/help'
     | '/inspiration'
     | '/journal'
     | '/login'
+    | '/privacy'
     | '/settings'
     | '/signup'
+    | '/stats'
+    | '/templates'
+    | '/terms'
     | '/boards/$boardId'
     | '/boards/new'
+    | '/goals/$goalId'
+    | '/journal/$entryId'
     | '/boards'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/contact'
     | '/dashboard'
     | '/goals'
+    | '/help'
     | '/inspiration'
     | '/journal'
     | '/login'
+    | '/privacy'
     | '/settings'
     | '/signup'
+    | '/stats'
+    | '/templates'
+    | '/terms'
     | '/boards/$boardId'
     | '/boards/new'
+    | '/goals/$goalId'
+    | '/journal/$entryId'
     | '/boards/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
-  GoalsRoute: typeof GoalsRoute
+  GoalsRoute: typeof GoalsRouteWithChildren
+  HelpRoute: typeof HelpRoute
   InspirationRoute: typeof InspirationRoute
-  JournalRoute: typeof JournalRoute
+  JournalRoute: typeof JournalRouteWithChildren
   LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
   SettingsRoute: typeof SettingsRoute
   SignupRoute: typeof SignupRoute
+  StatsRoute: typeof StatsRoute
+  TemplatesRoute: typeof TemplatesRoute
+  TermsRoute: typeof TermsRoute
   BoardsBoardIdRoute: typeof BoardsBoardIdRoute
   BoardsNewRoute: typeof BoardsNewRoute
   BoardsIndexRoute: typeof BoardsIndexRoute
@@ -182,6 +297,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -194,6 +323,13 @@ declare module '@tanstack/react-router' {
       path: '/goals'
       fullPath: '/goals'
       preLoaderRoute: typeof GoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inspiration': {
@@ -217,6 +353,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -229,6 +372,27 @@ declare module '@tanstack/react-router' {
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stats': {
+      id: '/stats'
+      path: '/stats'
+      fullPath: '/stats'
+      preLoaderRoute: typeof StatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/boards/': {
@@ -252,18 +416,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoardsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/goals/$goalId': {
+      id: '/goals/$goalId'
+      path: '/$goalId'
+      fullPath: '/goals/$goalId'
+      preLoaderRoute: typeof GoalsGoalIdRouteImport
+      parentRoute: typeof GoalsRoute
+    }
+    '/journal/$entryId': {
+      id: '/journal/$entryId'
+      path: '/$entryId'
+      fullPath: '/journal/$entryId'
+      preLoaderRoute: typeof JournalEntryIdRouteImport
+      parentRoute: typeof JournalRoute
+    }
   }
 }
 
+interface GoalsRouteChildren {
+  GoalsGoalIdRoute: typeof GoalsGoalIdRoute
+}
+
+const GoalsRouteChildren: GoalsRouteChildren = {
+  GoalsGoalIdRoute: GoalsGoalIdRoute,
+}
+
+const GoalsRouteWithChildren = GoalsRoute._addFileChildren(GoalsRouteChildren)
+
+interface JournalRouteChildren {
+  JournalEntryIdRoute: typeof JournalEntryIdRoute
+}
+
+const JournalRouteChildren: JournalRouteChildren = {
+  JournalEntryIdRoute: JournalEntryIdRoute,
+}
+
+const JournalRouteWithChildren =
+  JournalRoute._addFileChildren(JournalRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
-  GoalsRoute: GoalsRoute,
+  GoalsRoute: GoalsRouteWithChildren,
+  HelpRoute: HelpRoute,
   InspirationRoute: InspirationRoute,
-  JournalRoute: JournalRoute,
+  JournalRoute: JournalRouteWithChildren,
   LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
   SettingsRoute: SettingsRoute,
   SignupRoute: SignupRoute,
+  StatsRoute: StatsRoute,
+  TemplatesRoute: TemplatesRoute,
+  TermsRoute: TermsRoute,
   BoardsBoardIdRoute: BoardsBoardIdRoute,
   BoardsNewRoute: BoardsNewRoute,
   BoardsIndexRoute: BoardsIndexRoute,

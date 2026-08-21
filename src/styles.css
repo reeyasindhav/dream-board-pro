@@ -207,3 +207,36 @@
     -webkit-font-smoothing: antialiased;
   }
 }
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-fadeIn {
+  animation: fadeInUp 0.35s ease-out both;
+}
+
+@utility animate-bounce-in {
+  animation: bounceIn 0.35s ease-out both;
+}

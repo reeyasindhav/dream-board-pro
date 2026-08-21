@@ -7,9 +7,15 @@ export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
       { title: "Sign in — Dreamboard" },
-      { name: "description", content: "Sign in to your Dreamboard vision boards, goals and mood journal." },
+      {
+        name: "description",
+        content: "Sign in to your Dreamboard vision boards, goals and mood journal.",
+      },
       { property: "og:title", content: "Sign in — Dreamboard" },
-      { property: "og:description", content: "Return to your vision boards and gentle goal tracking." },
+      {
+        property: "og:description",
+        content: "Return to your vision boards and gentle goal tracking.",
+      },
     ],
   }),
   component: LoginPage,
@@ -52,8 +58,20 @@ function LoginPage() {
           navigate({ to: "/dashboard" });
         }}
       >
-        <Field label="Email" value={email} onChange={setEmail} type="email" placeholder="you@example.com" />
-        <Field label="Password" value={password} onChange={setPassword} type="password" placeholder="••••••••" />
+        <Field
+          label="Email"
+          value={email}
+          onChange={setEmail}
+          type="email"
+          placeholder="you@example.com"
+        />
+        <Field
+          label="Password"
+          value={password}
+          onChange={setPassword}
+          type="password"
+          placeholder="••••••••"
+        />
         {error && <p className="text-sm text-destructive">{error}</p>}
         <button
           type="submit"

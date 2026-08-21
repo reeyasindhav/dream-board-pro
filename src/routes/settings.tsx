@@ -2,12 +2,16 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { RequireAuth } from "@/components/RequireAuth";
 import { useApp } from "@/lib/app-store";
+import { SignOutButton } from "@/components/SignOutButton";
 
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
       { title: "Profile & settings — Dreamboard" },
-      { name: "description", content: "Manage your Dreamboard profile, reminders and gentle-mode preferences." },
+      {
+        name: "description",
+        content: "Manage your Dreamboard profile, reminders and gentle-mode preferences.",
+      },
       { property: "og:title", content: "Profile & settings — Dreamboard" },
       { property: "og:description", content: "Tune Dreamboard to the pace that suits you." },
     ],
@@ -42,7 +46,8 @@ function SettingsPage() {
           <div>
             <p className="display text-2xl text-primary">{state.user?.name}</p>
             <p className="text-sm text-muted-foreground">
-              {state.boards.length} boards · {state.goals.length} goals · {state.journal.length} entries
+              {state.boards.length} boards · {state.goals.length} goals · {state.journal.length}{" "}
+              entries
             </p>
           </div>
         </div>
@@ -107,15 +112,15 @@ function SettingsPage() {
         ))}
       </section>
 
-      <button
-        onClick={() => {
+      <SignOutButton
+        onConfirm={() => {
           signOut();
           navigate({ to: "/login" });
         }}
         className="rounded-full border border-border px-6 py-3 text-sm text-clay transition-colors hover:bg-secondary"
       >
         Sign out
-      </button>
+      </SignOutButton>
     </div>
   );
 }

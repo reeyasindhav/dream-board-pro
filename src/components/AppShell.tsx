@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react";
 import { Menu, Plus, Search, X } from "lucide-react";
 import { Brand } from "./Brand";
 import { useApp } from "@/lib/app-store";
+import { SignOutButton } from "@/components/SignOutButton";
 
 const nav = [
   { to: "/dashboard", label: "Overview" },
@@ -10,6 +11,8 @@ const nav = [
   { to: "/goals", label: "Goals" },
   { to: "/journal", label: "Journal" },
   { to: "/inspiration", label: "Inspiration" },
+  { to: "/stats", label: "Stats" },
+  { to: "/templates", label: "Templates" },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -22,6 +25,11 @@ export function AppShell({ children }: { children: ReactNode }) {
     .slice(0, 2)
     .join("")
     .toUpperCase();
+
+  const handleSignOut = () => {
+    signOut();
+    navigate({ to: "/login" });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -85,15 +93,12 @@ export function AppShell({ children }: { children: ReactNode }) {
                   {item.label}
                 </Link>
               ))}
-              <button
-                onClick={() => {
-                  signOut();
-                  navigate({ to: "/login" });
-                }}
+              <SignOutButton
+                onConfirm={handleSignOut}
                 className="mt-1 rounded-lg px-3 py-2 text-left text-sm text-clay"
               >
                 Sign out
-              </button>
+              </SignOutButton>
             </div>
           </div>
         )}
@@ -104,18 +109,30 @@ export function AppShell({ children }: { children: ReactNode }) {
       <footer className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 border-t border-border/70 px-5 py-6 text-sm text-muted-foreground">
         <span>Dreamboard / personal space</span>
         <div className="flex items-center gap-4">
+          <Link to="/about" className="hover:text-primary">
+            About
+          </Link>
+          <Link to="/templates" className="hover:text-primary">
+            Templates
+          </Link>
+          <Link to="/stats" className="hover:text-primary">
+            Stats
+          </Link>
+          <Link to="/help" className="hover:text-primary">
+            Help
+          </Link>
+          <Link to="/privacy" className="hover:text-primary">
+            Privacy
+          </Link>
+          <Link to="/terms" className="hover:text-primary">
+            Terms
+          </Link>
           <Link to="/settings" className="hover:text-primary">
             Settings
           </Link>
-          <button
-            onClick={() => {
-              signOut();
-              navigate({ to: "/login" });
-            }}
-            className="hover:text-primary"
-          >
+          <SignOutButton onConfirm={handleSignOut} className="hover:text-primary">
             Sign out
-          </button>
+          </SignOutButton>
         </div>
       </footer>
     </div>

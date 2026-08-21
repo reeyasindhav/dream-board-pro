@@ -16,7 +16,10 @@ export const Route = createFileRoute("/boards/new")({
   head: () => ({
     meta: [
       { title: "New board — Dreamboard" },
-      { name: "description", content: "Start a new vision board: name the chapter, choose a cover and begin collecting." },
+      {
+        name: "description",
+        content: "Start a new vision board: name the chapter, choose a cover and begin collecting.",
+      },
       { property: "og:title", content: "New board — Dreamboard" },
       { property: "og:description", content: "Give a new chapter of your life a place to live." },
     ],
@@ -99,10 +102,17 @@ function NewBoard() {
                 onClick={() => setCover(c)}
                 className={
                   "h-24 overflow-hidden rounded-xl border-2 transition-all duration-300 " +
-                  (cover === c ? "border-primary scale-[1.02]" : "border-transparent opacity-75 hover:opacity-100")
+                  (cover === c
+                    ? "border-primary scale-[1.02]"
+                    : "border-transparent opacity-75 hover:opacity-100")
                 }
               >
-                <img src={c} alt="Board cover option" loading="lazy" className="h-full w-full object-cover" />
+                <img
+                  src={c}
+                  alt="Board cover option"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </button>
             ))}
           </div>

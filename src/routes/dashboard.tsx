@@ -4,15 +4,23 @@ import { BookOpen, Check, Flag, Heart, ImagePlus, Plus, Target } from "lucide-re
 import { RequireAuth } from "@/components/RequireAuth";
 import { ProgressBar } from "@/components/Progress";
 import { useApp, useOverallMomentum } from "@/lib/app-store";
+import { toast } from "sonner";
 import { moods, quotes } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
       { title: "Overview — Dreamboard" },
-      { name: "description", content: "Your daily Dreamboard overview: north star, mood check-in, tiny steps and vision boards." },
+      {
+        name: "description",
+        content:
+          "Your daily Dreamboard overview: north star, mood check-in, tiny steps and vision boards.",
+      },
       { property: "og:title", content: "Overview — Dreamboard" },
-      { property: "og:description", content: "One calm screen for your vision, your mood and your next small step." },
+      {
+        property: "og:description",
+        content: "One calm screen for your vision, your mood and your next small step.",
+      },
     ],
   }),
   component: () => (
@@ -39,14 +47,19 @@ function Dashboard() {
         <section className="animate-rise relative overflow-hidden rounded-3xl bg-primary p-8 text-primary-foreground sm:p-12">
           <div className="absolute -right-16 -top-16 h-56 w-56 animate-float rounded-full bg-accent/20" />
           <p className="eyebrow text-primary-foreground/70">
-            {new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}
+            {new Date().toLocaleDateString(undefined, {
+              weekday: "long",
+              month: "long",
+              day: "numeric",
+            })}
           </p>
           <h1 className="display mt-4 text-4xl sm:text-6xl">
             Good morning, {state.user?.name.split(" ")[0]}.
             <span className="block text-primary-foreground/60">Let's make it visible.</span>
           </h1>
           <p className="mt-5 max-w-md text-sm text-primary-foreground/75">
-            Your dreams don't need to be perfect. They just need a place to land, and one small step to begin.
+            Your dreams don't need to be perfect. They just need a place to land, and one small step
+            to begin.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -70,7 +83,9 @@ function Dashboard() {
               <p className="eyebrow">Your north star</p>
               <Heart className="h-6 w-6 text-clay" />
             </div>
-            <h2 className="display mt-3 text-3xl text-primary">Create a life that feels like you.</h2>
+            <h2 className="display mt-3 text-3xl text-primary">
+              Create a life that feels like you.
+            </h2>
             <div className="mt-8 flex items-end justify-between">
               <div>
                 <p className="text-xs text-muted-foreground">Monthly focus</p>
@@ -120,6 +135,7 @@ function Dashboard() {
                   title: `Feeling ${mood.toLowerCase()}`,
                   body: note || "Checked in without words today.",
                 });
+                toast.success("Check-in saved.");
                 setNote("");
                 setSaved(true);
                 setTimeout(() => setSaved(false), 2200);
@@ -195,7 +211,11 @@ function Dashboard() {
                 {m.done && <Check className="h-3 w-3" />}
               </span>
               <span className="flex-1">
-                <span className={"block text-sm " + (m.done ? "text-muted-foreground line-through" : "")}>
+                <span
+                  className={
+                    "block text-sm " + (m.done ? "text-muted-foreground line-through" : "")
+                  }
+                >
                   {m.title}
                 </span>
                 <span className="block text-xs text-muted-foreground">{m.area}</span>

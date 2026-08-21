@@ -9,9 +9,15 @@ export const Route = createFileRoute("/inspiration")({
   head: () => ({
     meta: [
       { title: "Inspiration cards — Dreamboard" },
-      { name: "description", content: "A shelf of motivational quote cards you can save straight onto any vision board." },
+      {
+        name: "description",
+        content: "A shelf of motivational quote cards you can save straight onto any vision board.",
+      },
       { property: "og:title", content: "Inspiration cards — Dreamboard" },
-      { property: "og:description", content: "Words for the middle of the journey, ready to pin to your boards." },
+      {
+        property: "og:description",
+        content: "Words for the middle of the journey, ready to pin to your boards.",
+      },
     ],
   }),
   component: () => (

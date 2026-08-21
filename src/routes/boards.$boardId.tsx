@@ -9,9 +9,15 @@ export const Route = createFileRoute("/boards/$boardId")({
   head: () => ({
     meta: [
       { title: "Board builder — Dreamboard" },
-      { name: "description", content: "Arrange images, quotes and notes with drag and drop to shape your vision board." },
+      {
+        name: "description",
+        content: "Arrange images, quotes and notes with drag and drop to shape your vision board.",
+      },
       { property: "og:title", content: "Board builder — Dreamboard" },
-      { property: "og:description", content: "Drag, drop and rearrange the pieces of the life you're building." },
+      {
+        property: "og:description",
+        content: "Drag, drop and rearrange the pieces of the life you're building.",
+      },
     ],
   }),
   component: () => (
@@ -50,21 +56,26 @@ function BoardDetail() {
 
   return (
     <div className="space-y-8">
-      <Link to="/boards" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+      <Link
+        to="/boards"
+        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
+      >
         <ArrowLeft className="h-4 w-4" /> All boards
       </Link>
 
       <header className="animate-rise grid gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
         <div>
-          <p className="eyebrow">{board.category} / {board.items.length} pieces</p>
+          <p className="eyebrow">
+            {board.category} / {board.items.length} pieces
+          </p>
           <h1 className="display mt-3 text-5xl text-primary sm:text-6xl">{board.title}</h1>
           <p className="mt-4 max-w-xl text-sm text-muted-foreground">{board.description}</p>
         </div>
         <div className="rounded-2xl bg-accent p-6 text-accent-foreground">
           <p className="eyebrow">How to build</p>
           <p className="mt-2 text-sm">
-            Drag any piece by its handle to rearrange the collage. Add a quote, note or image below — your
-            arrangement saves itself.
+            Drag any piece by its handle to rearrange the collage. Add a quote, note or image below
+            — your arrangement saves itself.
           </p>
         </div>
       </header>
@@ -87,7 +98,9 @@ function BoardDetail() {
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder={kind === "image" ? "Paste an image URL…" : "Write the words that keep you going…"}
+          placeholder={
+            kind === "image" ? "Paste an image URL…" : "Write the words that keep you going…"
+          }
           className="min-w-[14rem] flex-1 rounded-xl border border-border bg-background px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ring"
         />
         <button
@@ -143,7 +156,12 @@ function BoardDetail() {
 
             {item.type === "image" ? (
               <>
-                <img src={item.content} alt={item.caption ?? "Board piece"} loading="lazy" className="w-full object-cover" />
+                <img
+                  src={item.content}
+                  alt={item.caption ?? "Board piece"}
+                  loading="lazy"
+                  className="w-full object-cover"
+                />
                 <p className="px-4 py-3 text-xs text-muted-foreground">{item.caption}</p>
               </>
             ) : item.type === "quote" ? (
@@ -169,10 +187,17 @@ function BoardDetail() {
           {suggestions.map((s) => (
             <button
               key={s}
-              onClick={() => addBoardItem(board.id, { type: "image", content: s, caption: "From the shelf" })}
+              onClick={() =>
+                addBoardItem(board.id, { type: "image", content: s, caption: "From the shelf" })
+              }
               className="lift h-32 overflow-hidden rounded-xl"
             >
-              <img src={s} alt="Inspiration suggestion" loading="lazy" className="h-full w-full object-cover" />
+              <img
+                src={s}
+                alt="Inspiration suggestion"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
             </button>
           ))}
         </div>

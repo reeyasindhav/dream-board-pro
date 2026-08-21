@@ -25,11 +25,19 @@ export function AuthLayout({
           <p className="mt-4 text-sm text-muted-foreground">{subtitle}</p>
           <div className="mt-8">{children}</div>
         </div>
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           {footer}
-          <Link to="/" className="text-sm text-muted-foreground hover:text-primary">
-            Back home
-          </Link>
+          <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-primary">
+              Back home
+            </Link>
+            <Link to="/privacy" className="hover:text-primary">
+              Privacy
+            </Link>
+            <Link to="/terms" className="hover:text-primary">
+              Terms
+            </Link>
+          </div>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { useApp } from "@/lib/app-store";
 import { AppShell } from "./AppShell";
+import { Loading } from "./Loading";
 
 export function RequireAuth({ children }: { children: ReactNode }) {
   const { ready, state } = useApp();
@@ -14,7 +15,7 @@ export function RequireAuth({ children }: { children: ReactNode }) {
   if (!ready || !state.user) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <p className="eyebrow animate-pulse">Opening your space…</p>
+        <Loading label="Opening your space…" />
       </div>
     );
   }

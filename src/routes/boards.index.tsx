@@ -8,9 +8,16 @@ export const Route = createFileRoute("/boards/")({
   head: () => ({
     meta: [
       { title: "My boards — Dreamboard" },
-      { name: "description", content: "Your visual library of vision boards: images, words and tiny sparks for what's next." },
+      {
+        name: "description",
+        content:
+          "Your visual library of vision boards: images, words and tiny sparks for what's next.",
+      },
       { property: "og:title", content: "My boards — Dreamboard" },
-      { property: "og:description", content: "Collect what calls you forward in a living visual library." },
+      {
+        property: "og:description",
+        content: "Collect what calls you forward in a living visual library.",
+      },
     ],
   }),
   component: () => (

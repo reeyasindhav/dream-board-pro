@@ -45,12 +45,37 @@ export const initialBoards: Board[] = [
     cover: img("1497366754035-f200968a6e72"),
     description: "The rooms, rhythms and rituals of the person I am growing into.",
     items: [
-      { id: "b1", type: "image", content: img("1497366811353-6870744d04b2", 700), caption: "A calm studio" },
+      {
+        id: "b1",
+        type: "image",
+        content: img("1497366811353-6870744d04b2", 700),
+        caption: "A calm studio",
+      },
       { id: "b2", type: "quote", content: "Begin again, gently.", caption: "Morning mantra" },
-      { id: "b3", type: "image", content: img("1522708323590-d24dbb6b0267", 700), caption: "Slow mornings" },
-      { id: "b4", type: "note", content: "Write 300 words before the world wakes up.", caption: "Daily practice" },
-      { id: "b5", type: "image", content: img("1493809842364-78817add7ffb", 700), caption: "Rest is productive" },
-      { id: "b6", type: "quote", content: "Small steps make big visions believable.", caption: "North star" },
+      {
+        id: "b3",
+        type: "image",
+        content: img("1522708323590-d24dbb6b0267", 700),
+        caption: "Slow mornings",
+      },
+      {
+        id: "b4",
+        type: "note",
+        content: "Write 300 words before the world wakes up.",
+        caption: "Daily practice",
+      },
+      {
+        id: "b5",
+        type: "image",
+        content: img("1493809842364-78817add7ffb", 700),
+        caption: "Rest is productive",
+      },
+      {
+        id: "b6",
+        type: "quote",
+        content: "Small steps make big visions believable.",
+        caption: "North star",
+      },
     ],
   },
   {
@@ -60,11 +85,31 @@ export const initialBoards: Board[] = [
     cover: img("1470071459604-3b5ec3a7fe05"),
     description: "Golden hours, long dinners, and the courage to slow all the way down.",
     items: [
-      { id: "g1", type: "image", content: img("1501785888041-af3ef285b470", 700), caption: "Sunset ritual" },
-      { id: "g2", type: "image", content: img("1476514525535-07fb3b4ae5f1", 700), caption: "Road trips" },
+      {
+        id: "g1",
+        type: "image",
+        content: img("1501785888041-af3ef285b470", 700),
+        caption: "Sunset ritual",
+      },
+      {
+        id: "g2",
+        type: "image",
+        content: img("1476514525535-07fb3b4ae5f1", 700),
+        caption: "Road trips",
+      },
       { id: "g3", type: "note", content: "One unhurried weekend every month.", caption: "Promise" },
-      { id: "g4", type: "quote", content: "You do not have to do everything. Just the next kind thing.", caption: "A note for today" },
-      { id: "g5", type: "image", content: img("1504674900247-0877df9cc836", 700), caption: "Long dinners" },
+      {
+        id: "g4",
+        type: "quote",
+        content: "You do not have to do everything. Just the next kind thing.",
+        caption: "A note for today",
+      },
+      {
+        id: "g5",
+        type: "image",
+        content: img("1504674900247-0877df9cc836", 700),
+        caption: "Long dinners",
+      },
     ],
   },
   {
@@ -74,10 +119,25 @@ export const initialBoards: Board[] = [
     cover: img("1449157291145-7efd050a4d0e"),
     description: "Making something imperfect, often, and out loud.",
     items: [
-      { id: "c1", type: "image", content: img("1513364776144-60967b0f800f", 700), caption: "Play more" },
+      {
+        id: "c1",
+        type: "image",
+        content: img("1513364776144-60967b0f800f", 700),
+        caption: "Play more",
+      },
       { id: "c2", type: "quote", content: "Done is a kind of courage.", caption: "Studio wall" },
-      { id: "c3", type: "image", content: img("1452587925148-ce544e77e70d", 700), caption: "Hands on clay" },
-      { id: "c4", type: "note", content: "Share work with a friend every Sunday.", caption: "Accountability" },
+      {
+        id: "c3",
+        type: "image",
+        content: img("1452587925148-ce544e77e70d", 700),
+        caption: "Hands on clay",
+      },
+      {
+        id: "c4",
+        type: "note",
+        content: "Share work with a friend every Sunday.",
+        caption: "Accountability",
+      },
     ],
   },
   {
@@ -87,9 +147,24 @@ export const initialBoards: Board[] = [
     cover: img("1518611012118-696072aa579a"),
     description: "Movement as kindness, not punishment.",
     items: [
-      { id: "h1", type: "image", content: img("1571019613454-1cb2f99b2d8b", 700), caption: "Movement class" },
-      { id: "h2", type: "note", content: "Walk without headphones twice a week.", caption: "Quiet" },
-      { id: "h3", type: "quote", content: "Your body is the only home you never leave.", caption: "Reminder" },
+      {
+        id: "h1",
+        type: "image",
+        content: img("1571019613454-1cb2f99b2d8b", 700),
+        caption: "Movement class",
+      },
+      {
+        id: "h2",
+        type: "note",
+        content: "Walk without headphones twice a week.",
+        caption: "Quiet",
+      },
+      {
+        id: "h3",
+        type: "quote",
+        content: "Your body is the only home you never leave.",
+        caption: "Reminder",
+      },
     ],
   },
 ];
@@ -155,14 +230,54 @@ export const initialJournal: JournalEntry[] = [
 ];
 
 export const quotes: Quote[] = [
-  { id: "q1", text: "You do not have to do everything. Just the next kind thing.", author: "Dreamboard", theme: "Gentleness" },
-  { id: "q2", text: "Progress is still progress, even when it feels quiet.", author: "Unknown", theme: "Patience" },
-  { id: "q3", text: "Small steps make big visions believable.", author: "Dreamboard", theme: "Momentum" },
-  { id: "q4", text: "What you do every day matters more than what you do once in a while.", author: "Gretchen Rubin", theme: "Rhythm" },
-  { id: "q5", text: "The life you want is built in ordinary afternoons.", author: "Unknown", theme: "Presence" },
-  { id: "q6", text: "Begin again, as many times as you need.", author: "Dreamboard", theme: "Beginnings" },
-  { id: "q7", text: "Dreams don't need to be perfect. They need a place to land.", author: "Dreamboard", theme: "Clarity" },
-  { id: "q8", text: "Rest is part of the work, not a reward for it.", author: "Unknown", theme: "Wellbeing" },
+  {
+    id: "q1",
+    text: "You do not have to do everything. Just the next kind thing.",
+    author: "Dreamboard",
+    theme: "Gentleness",
+  },
+  {
+    id: "q2",
+    text: "Progress is still progress, even when it feels quiet.",
+    author: "Unknown",
+    theme: "Patience",
+  },
+  {
+    id: "q3",
+    text: "Small steps make big visions believable.",
+    author: "Dreamboard",
+    theme: "Momentum",
+  },
+  {
+    id: "q4",
+    text: "What you do every day matters more than what you do once in a while.",
+    author: "Gretchen Rubin",
+    theme: "Rhythm",
+  },
+  {
+    id: "q5",
+    text: "The life you want is built in ordinary afternoons.",
+    author: "Unknown",
+    theme: "Presence",
+  },
+  {
+    id: "q6",
+    text: "Begin again, as many times as you need.",
+    author: "Dreamboard",
+    theme: "Beginnings",
+  },
+  {
+    id: "q7",
+    text: "Dreams don't need to be perfect. They need a place to land.",
+    author: "Dreamboard",
+    theme: "Clarity",
+  },
+  {
+    id: "q8",
+    text: "Rest is part of the work, not a reward for it.",
+    author: "Unknown",
+    theme: "Wellbeing",
+  },
 ];
 
 export const moods = ["Radiant", "Good", "Okay", "Low"] as const;

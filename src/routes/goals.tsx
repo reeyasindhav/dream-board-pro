@@ -1,15 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Plus, Target } from "lucide-react";
 import { RequireAuth } from "@/components/RequireAuth";
 import { ProgressBar } from "@/components/Progress";
 import { useApp, useOverallMomentum } from "@/lib/app-store";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/goals")({
   head: () => ({
     meta: [
       { title: "Goals & milestones — Dreamboard" },
-      { name: "description", content: "Track life goals through gentle milestones and watch momentum build day by day." },
+      {
+        name: "description",
+        content: "Track life goals through gentle milestones and watch momentum build day by day.",
+      },
       { property: "og:title", content: "Goals & milestones — Dreamboard" },
       { property: "og:description", content: "Small steps make big visions believable." },
     ],
@@ -37,7 +41,8 @@ function GoalsPage() {
             <span className="block">big visions believable.</span>
           </h1>
           <p className="mt-5 max-w-md text-sm text-muted-foreground">
-            Goals are not a test to pass. They are gentle invitations to practice the life you are creating.
+            Goals are not a test to pass. They are gentle invitations to practice the life you are
+            creating.
           </p>
         </div>
         <div className="animate-soft-in rounded-3xl bg-primary p-8 text-primary-foreground">
@@ -68,6 +73,13 @@ function GoalsPage() {
               <p className="display text-2xl text-primary">{goal.progress}%</p>
             </div>
             <h2 className="display mt-2 text-3xl text-primary">{goal.title}</h2>
+            <Link
+              to="/goals/$goalId"
+              params={{ goalId: goal.id }}
+              className="mt-1 inline-flex items-center gap-1 text-xs text-clay hover:text-primary"
+            >
+              View milestones →
+            </Link>
             <div className="mt-5">
               <ProgressBar value={goal.progress} />
             </div>
@@ -82,12 +94,16 @@ function GoalsPage() {
                     <span
                       className={
                         "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-all duration-300 " +
-                        (m.done ? "border-primary bg-primary text-primary-foreground scale-105" : "border-border bg-secondary")
+                        (m.done
+                          ? "border-primary bg-primary text-primary-foreground scale-105"
+                          : "border-border bg-secondary")
                       }
                     >
                       {m.done && <Check className="h-3.5 w-3.5" />}
                     </span>
-                    <span className={"text-sm " + (m.done ? "text-muted-foreground line-through" : "")}>
+                    <span
+                      className={"text-sm " + (m.done ? "text-muted-foreground line-through" : "")}
+                    >
                       {m.title}
                     </span>
                   </button>
@@ -102,6 +118,7 @@ function GoalsPage() {
                 const v = (drafts[goal.id] ?? "").trim();
                 if (!v) return;
                 addMilestone(goal.id, v);
+                toast.success("New milestone added.");
                 setDrafts((d) => ({ ...d, [goal.id]: "" }));
               }}
             >
@@ -130,6 +147,7 @@ function GoalsPage() {
             e.preventDefault();
             if (!newGoal.trim()) return;
             addGoal(newGoal.trim(), "Personal");
+            toast.success("New goal added.");
             setNewGoal("");
           }}
         >
